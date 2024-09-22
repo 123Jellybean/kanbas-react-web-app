@@ -52,9 +52,8 @@ export default function Lab1() {
                 6. Cook until bubbly on top.
                 7. Flip and cook the other side.
                 8. Serve and enjoy!
-            </div>
 
-            <div id="wd-lists">
+
                 <h4>List Tags</h4>
                 <h5>Ordered List Tag</h5>
                 How to make pancakes:
@@ -317,8 +316,7 @@ export default function Lab1() {
             <a id="wd-lipsum" href="https://www.lipsum.com">click here</a>
             to get dummy text<br />
             <br />
-            <a id="wd-github" href=""
-
+            <a id="wd-github" href=""></a>
 
         </div>
 
