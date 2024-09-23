@@ -13,12 +13,6 @@ export default function KanbasNavigation() {
         <br />
       </li>
       <li>
-        <Link to="/Landing" id="wb-landing">
-          Landing Page
-        </Link>
-        <br />
-      </li>
-      <li>
         <Link to="/Kanbas/Account" id="wd-account-link">
           Account
         </Link>
@@ -55,13 +49,6 @@ export default function KanbasNavigation() {
         <br />
       </li>
       <br />
-      <li>
-        <Link to="/Landing" id="wd-landing">
-          Inbox
-        </Link>
-        <br />
-      </li>
-
     </div>
   );
 }
