@@ -1,14 +1,67 @@
 import { Link } from "react-router-dom";
 export default function KanbasNavigation() {
-    return (
-        <div id="wd-kanbas-navigation">
-            <li><a href="https://www.northeastern.edu/" id="wd-neu-link" target="_blank">Northeastern</a><br /></li>
-            <li><Link to="/Kanbas/Account" id="wd-account-link">Account</Link><br /></li>
-            <li><Link to="/Kanbas/Dashboard" id="wd-dashboard-link">Dashboard</Link><br /></li>
-            <li><Link to="/Kanbas/Dashboard" id="wd-course-link">Courses</Link><br /></li>
-            <li><Link to="/Kanbas/Calendar" id="wd-calendar-link">Calendar</Link><br /></li>
-            <li><Link to="/Kanbas/Inbox" id="wd-inbox-link">Inbox</Link><br /></li>
-            <li><Link to="/Labs" id="wd-labs-link">Labs</Link><br /></li>
-        </div>
-    );
+  return (
+    <div id="wd-kanbas-navigation">
+      <li>
+        <a
+          href="https://www.northeastern.edu/"
+          id="wd-neu-link"
+          target="_blank"
+        >
+          Northeastern
+        </a>
+        <br />
+      </li>
+      <li>
+        <Link to="/Landing" id="wb-landing">
+          Landing Page
+        </Link>
+        <br />
+      </li>
+      <li>
+        <Link to="/Kanbas/Account" id="wd-account-link">
+          Account
+        </Link>
+        <br />
+      </li>
+      <li>
+        <Link to="/Kanbas/Dashboard" id="wd-dashboard-link">
+          Dashboard
+        </Link>
+        <br />
+      </li>
+      <li>
+        <Link to="/Kanbas/Dashboard" id="wd-course-link">
+          Courses
+        </Link>
+        <br />
+      </li>
+      <li>
+        <Link to="/Labs" id="wd-labs-link">
+          Labs
+        </Link>
+        <br />
+      </li>
+      <li>
+        <Link to="/Kanbas/Calendar" id="wd-calendar-link">
+          Calendar
+        </Link>
+        <br />
+      </li>
+      <li>
+        <Link to="/Kanbas/Inbox" id="wd-inbox-link">
+          Inbox
+        </Link>
+        <br />
+      </li>
+      <br />
+      <li>
+        <Link to="/Landing" id="wd-landing">
+          Inbox
+        </Link>
+        <br />
+      </li>
+
+    </div>
+  );
 }
