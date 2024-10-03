@@ -74,7 +74,7 @@ export default function KanbasNavigation() {
       </Link>
 
       <Link
-        to="/Kanbas/Dashboard"
+        to="/Labs"
         id="wd-help-link"
         className="list-group-item text-white
                    bg-black text-center border-0"

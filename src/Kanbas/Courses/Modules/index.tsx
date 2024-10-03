@@ -1,9 +1,7 @@
 import ModulesControls from "./ModulesControls";
-import { BsGripVertical } from 'react-icons/bs';
-import ModuleControlButtons from './LessonControlButtons';
-import LessonControlButtons from './LessonControlButtons';
-import CourseStatus from "../Home/Status";
-
+import { BsGripVertical } from "react-icons/bs";
+import ModuleControlButtons from "./LessonControlButtons";
+import LessonControlButtons from "./LessonControlButtons";
 
 export default function Modules() {
   return (
@@ -46,9 +44,9 @@ export default function Modules() {
                 LESSON 2
                 <LessonControlButtons />
               </li>
-
-              </ul>  </li>  </ul>
-
+            </ul>{" "}
+          </li>{" "}
+        </ul>
       </div>
     </div>
   );
