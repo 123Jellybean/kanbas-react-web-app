@@ -34,6 +34,10 @@ body * {
   --bs-list-group-border-color: gray;
 }
 
+.bg-red {
+  --bs-b-color: #ff7070;
+}
+
 .wd-lesson {
   border-left: 3px solid green !important;
 }
