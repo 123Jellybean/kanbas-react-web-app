@@ -19,9 +19,12 @@ root.render(
 export default function Labs() {
   return (
     <div>
-      <h1>Jenna Sigman</h1>
+      <h1>Jenna Sigman</h1> <hr />
+      <br />
       <h1>Labs</h1>
+      <br />
       <TOC />
+      <br />
       <Routes>
         <Route path="/" element={<Navigate to="Lab1" />} />
         <Route path="Lab1" element={<Lab1 />} />
