@@ -19,6 +19,7 @@ root.render(
 export default function Labs() {
   return (
     <div>
+      <h1>Jenna Sigman</h1>
       <h1>Labs</h1>
       <TOC />
       <Routes>
