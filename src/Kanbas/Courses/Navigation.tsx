@@ -1,8 +1,102 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import "../style.css";
 export default function CoursesNavigation() {
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
-      <Link
+      <nav>
+        <NavLink
+          to="/Kanbas/Courses/1234/Home"
+          id="wd-course-home-link"
+          className={({ isActive }) =>
+            isActive
+              ? "list-group-item custom-active border border-0"
+              : "list-group-item custom-inactive border border-0"
+          }
+        >
+          {" "}
+          Home{" "}
+        </NavLink>
+
+        <NavLink
+          to="/Kanbas/Courses/1234/Modules"
+          id="wd-course-home-link"
+          className={({ isActive }) =>
+            isActive
+              ? "list-group-item custom-active border border-0"
+              : "list-group-item custom-inactive border border-0"
+          }
+        >
+          {" "}
+          Modules{" "}
+        </NavLink>
+
+        <NavLink
+          to="/Kanbas/Courses/1234/Piazza"
+          id="wd-course-home-link"
+          className={({ isActive }) =>
+            isActive
+              ? "list-group-item custom-active border border-0"
+              : "list-group-item custom-inactive border border-0"
+          }
+        >
+          {" "}
+          Piazza{" "}
+        </NavLink>
+
+        <NavLink
+          to="/Kanbas/Courses/1234/Zoom"
+          id="wd-course-home-link"
+          className={({ isActive }) =>
+            isActive
+              ? "list-group-item custom-active border border-0"
+              : "list-group-item custom-inactive border border-0"
+          }
+        >
+          {" "}
+          Zoom{" "}
+        </NavLink>
+
+        <NavLink
+          to="/Kanbas/Courses/1234/Assignments"
+          id="wd-course-home-link"
+          className={({ isActive }) =>
+            isActive
+              ? "list-group-item custom-active border border-0"
+              : "list-group-item custom-inactive border border-0"
+          }
+        >
+          {" "}
+          Assignments{" "}
+        </NavLink>
+
+        <NavLink
+          to="/Kanbas/Courses/1234/Quizzes"
+          id="wd-course-home-link"
+          className={({ isActive }) =>
+            isActive
+              ? "list-group-item custom-active border border-0"
+              : "list-group-item custom-inactive border border-0"
+          }
+        >
+          {" "}
+          Quizzes{" "}
+        </NavLink>
+
+        <NavLink
+          to="/Kanbas/Courses/1234/People"
+          id="wd-course-home-link"
+          className={({ isActive }) =>
+            isActive
+              ? "list-group-item custom-active border border-0"
+              : "list-group-item custom-inactive border border-0"
+          }
+        >
+          {" "}
+          People{" "}
+        </NavLink>
+      </nav>
+
+      {/* <Link
         to="/Kanbas/Courses/1234/Home"
         id="wd-course-home-link"
         className="list-group-item active border border-0"
@@ -10,6 +104,7 @@ export default function CoursesNavigation() {
         {" "}
         Home{" "}
       </Link>
+
       <Link
         to="/Kanbas/Courses/1234/Modules"
         id="wd-course-modules-link"
@@ -57,7 +152,7 @@ export default function CoursesNavigation() {
       >
         {" "}
         People{" "}
-      </Link>
+      </Link> */}
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
+import { CiNoWaitingSign } from "react-icons/ci";
 export default function ModulesControls() {
   return (
-    <div id="wd-modules-controls" className="text-nowrap">
+    <div id="wd-modules-controls" className="text-nowrap me-4">
       <button
         id="wd-add-module-btn"
         className="btn btn-lg btn-danger me-1 float-end"
@@ -48,7 +49,7 @@ export default function ModulesControls() {
               className="dropdown-item"
               href="#"
             >
-              <GreenCheckmark />
+              <CiNoWaitingSign />
               Unpublish all modules and items{" "}
             </a>
           </li>
@@ -58,7 +59,7 @@ export default function ModulesControls() {
               className="dropdown-item"
               href="#"
             >
-              <GreenCheckmark />
+              <CiNoWaitingSign />
               Unpublish modules only
             </a>
           </li>
