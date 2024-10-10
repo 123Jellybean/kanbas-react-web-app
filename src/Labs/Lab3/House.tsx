@@ -12,6 +12,7 @@ const house = {
   owners: ["Alice", "Bob"],
 };
 export default function House() {
+    console.log(house);
   return (
     <div id="wd-house">
       <h4>House</h4>
