@@ -5,10 +5,12 @@ import AssignmentControls from "./AssignmentControls";
 import { FaPlus } from "react-icons/fa";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { PiNotebook } from "react-icons/pi";
-import * as db from "../../Database"; // Ensure assignments data is loaded properly
+import { useParams } from "react-router";
+import * as db from "../../Database";
 
 export default function Assignments() {
-  const assignments = db.assignments; // Load assignments from the database
+  const { aid } = useParams();
+  const assignments = db.assignments;
 
   return (
     <div>
@@ -24,28 +26,34 @@ export default function Assignments() {
             <IoEllipsisVertical className="float-end fs-3" />
             <FaPlus className="float-end me-3 fs-4" />
           </div>
-
           {/* Render each assignment dynamically */}
           <ul className="wd-lessons list-group rounded-0">
-            {assignments.map((assignment) => (
-              <li
-                key={assignment._id}
-                className="wd-lesson list-group-item p-3 ps-1 d-flex justify-content-between align-items-center"
-              >
-                <div>
-                  <BsGripVertical className="mt-4 me-2 fs-2" />
-                  <PiNotebook className="mt-4 me-2 fs-2" style={{ color: "green" }} />
-                  <span className="ms-3 fw-bold">{assignment.name}</span>
-                  <br />
-                  <span className="text-danger ms-5 ps-5">{assignment.module} </span> | 
-                  <b> Not available until</b> {assignment.opens} |
-                  <div className="ms-5 ps-5 text-muted">
-                    <b>Due</b> {assignment.due} | 100 pts
+            {assignments
+              .filter((assignment: any) => assignment.course === aid)
+              .map((assignment: any) => (
+                <li
+                  key={assignment._id}
+                  className="wd-lesson list-group-item p-3 ps-1 d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <BsGripVertical className="mt-4 me-2 fs-2" />
+                    <PiNotebook
+                      className="mt-4 me-2 fs-2"
+                      style={{ color: "green" }}
+                    />
+                    <span className="ms-3 fw-bold">{assignment.name}</span>
+                    <br />
+                    <span className="text-danger ms-5 ps-5">
+                      {assignment.module}{" "}
+                    </span>{" "}
+                    |<b> Not available until</b> {assignment.opens} |
+                    <div className="ms-5 ps-5 text-muted">
+                      <b>Due</b> {assignment.due} | 100 pts
+                    </div>
                   </div>
-                </div>
-                <LessonControlButtons />
-              </li>
-            ))}
+                  <LessonControlButtons />
+                </li>
+              ))}
           </ul>
         </li>
       </ul>
