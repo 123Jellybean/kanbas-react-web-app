@@ -13,7 +13,7 @@ export default function Dashboard() {
             <div className="card rounded-3 overflow-hidden">
               <Link
                 className="wd-dashboard-course-link text-decoration-none text-dark"
-                to="/Kanbas/Courses/${course._id}/Home"
+                  to={`/Kanbas/Courses/${course._id}/Home`}
               >
                 <img src={course.image} width="100%" height={160} />
                 <div className="card-body">

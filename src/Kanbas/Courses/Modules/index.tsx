@@ -4,6 +4,7 @@ import ModuleControlButtons from "./LessonControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 import { useParams } from "react-router";
 import * as db from "../../Database";
+
 export default function Modules() {
   const { cid } = useParams();
   const modules = db.modules;

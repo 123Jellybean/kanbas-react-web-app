@@ -1,8 +1,8 @@
-import { NavLink, useParams} from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import "../style.css";
 
 export default function CoursesNavigation() {
-  const { courseId } = useParams(); // Retrieve course ID from URL params
+  const { courseId } = useParams();
 
   const links = [
     "Home",
@@ -12,7 +12,7 @@ export default function CoursesNavigation() {
     "Assignments",
     "Quizzes",
     "Grades",
-    "People"
+    "People",
   ];
 
   return (

@@ -1,0 +1,22 @@
+[
+      {
+        "_id": "ASSIGNMENTS",
+        "name": "A1",
+        "module": "Multiple Modules",
+        "opens": "May 6 at 12:00 am",
+        "due": "May 13 at 11:59 pm"
+      },
+      {
+        "name": "A2",
+        "module": "Multiple Modules",
+        "opens": "May 13 at 12:00 am",
+        "due": "May 20 at 11:59 pm"
+      },
+      {
+        
+        "name": "A3",
+        "module": "Multiple Modules",
+        "opens": "May 20 at 12:00 am",
+        "due": "May 27 at 11:59 pm"
+      }
+    ]
