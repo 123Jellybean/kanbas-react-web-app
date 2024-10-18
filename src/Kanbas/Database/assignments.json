@@ -4,7 +4,9 @@
         "name": "A1",
         "module": "Multiple Modules",
         "opens": "May 6 at 12:00 am",
-        "due": "May 13 at 11:59 pm"
+        "due": "May 13 at 11:59 pm",
+        "description": "The assignment is available online\nSubmit a link to the landing page of your Web application running on Netlify.\nThe landing page should include the following:\n• Your full name and section \n • Links to each of the lab assignments\n• Links to the Kanbas application\n• Links to all relevant source code repositories\nThe Kanbas application should include a link to navigate back to the landing page.",
+        "points": "100"
       },
       {
         "name": "A2",

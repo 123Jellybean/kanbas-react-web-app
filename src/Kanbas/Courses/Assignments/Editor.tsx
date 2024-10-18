@@ -1,25 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
+import * as db from "../../Database";
 import { FaChevronDown } from "react-icons/fa";
 
 export default function AssignmentEditor() {
+  const { aid } = useParams();
+  const assignments = db.assignments;
+  const links = [
+    "Cancel",
+    "Save"
+  ]
   return (
     <div id="wd-assignments-editor">
       <h5>Assignment Name</h5>
+          {assignments.map((assignment: any) => (
+            <div>
       <input
-        defaultValue="A1"
+        defaultValue={assignment.name}
         placeholder="Assignment Name"
         className="form-control mb-2 "
       />
       <br />
       <textarea
-        defaultValue={`The assignment is available online
-Submit a link to the landing page of your Web application running on Netlify.
-The landing page should include the following:
-• Your full name and section
-• Links to each of the lab assignments
-• Links to the Kanbas application
-• Links to all relevant source code repositories
-The Kanbas application should include a link to navigate back to the landing page.`}
+        defaultValue={assignment.description}
         className="form-control mb-2"
         rows={8} // Adjust the number of visible rows as needed
         style={{ resize: "vertical" }} // Allow vertical resizing
@@ -37,7 +39,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                 </td>
                 <td style={{ width: "70%" }}>
                   <input
-                    defaultValue="100"
+                    defaultValue={assignment.points}
                     placeholder="numerical value"
                     className="form-control mb-2 mt-2"
                   />
@@ -193,7 +195,8 @@ The Kanbas application should include a link to navigate back to the landing pag
                         type="date"
                         id="wd-available-from"
                         className="form-control mb-2"
-                        value="2024-05-06"
+                        value={assignment.opens}
+                        placeholder="2024-05-06"
                       />
                     </td>
                     <td style={{ width: "50%" }}>
@@ -204,7 +207,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                         type="date"
                         id="wd-available-from"
                         className="form-control mb-2"
-                        value=""
+                        value={assignment.due}
                       />
                     </td>
                   </tr>
@@ -218,10 +221,27 @@ The Kanbas application should include a link to navigate back to the landing pag
         <hr />
 
         <div style={{ textAlign: "right", marginTop: "10px" }}>
+        <nav>
+        {links.map((link) => (
+          <NavLink
+            key={link}
+            to={`/Kanbas/Courses/${aid}/${link}`}
+            className={({ isActive }) =>
+              isActive
+                ? "list-group-item custom-active border border-0"
+                : "list-group-item custom-inactive border border-0"
+            }
+          >
+            {link}
+          </NavLink>
+        ))}
+      </nav>
           <button className="btn btn-secondary me-2">Cancel</button>
           <button className="btn btn-danger">Save</button>
         </div>
       </div>
     </div>
+      ))}
+      </div>
   );
 }
