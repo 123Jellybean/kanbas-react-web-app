@@ -41,7 +41,7 @@ export default function Assignments() {
                       className="mt-4 me-2 fs-2"
                       style={{ color: "green" }}
                     />
-                    <span className="ms-3 fw-bold">{assignment.name}</span>
+                    <span className="ms-3 fw-bold">{assignment.title}</span>
                     <br />
                     <span className="text-danger ms-5 ps-5">
                       {assignment.module}{" "}
