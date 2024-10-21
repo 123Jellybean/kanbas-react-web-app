@@ -9,8 +9,12 @@ import PeopleTable from "./People/Table";
 import { courses } from "../Database";
 export default function Courses() {
   const { cid } = useParams();
+  console.log(cid);
   const course = courses.find((course) => course._id === cid);
+  console.log(course);
   const { pathname } = useLocation();
+  console.log(pathname);
+  
   return (
     <div id="wd-courses">
       <h2 className="text-danger">
