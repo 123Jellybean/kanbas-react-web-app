@@ -5,16 +5,17 @@ import AssignmentControls from "./AssignmentControls";
 import { FaPlus } from "react-icons/fa";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { PiNotebook } from "react-icons/pi";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import * as db from "../../Database";
 
-export default function Assignments() {
+function Assignments() {
   const { cid } = useParams();
   const assignments = db.assignments;
   const courseAssignments = assignments.filter(
     (assignment) => assignment.course === cid
   );
+  const { pathname } = useLocation();
 
   return (
     <div>
@@ -47,8 +48,8 @@ export default function Assignments() {
             {/* Assignment title and modules */}
             <div className="flex-grow-1">
               <Link
-                to={`/Kanbas/Courses/${cid}/Assignments/AssignmentEditor/${assignment._id}`}
-                className="custom-link fw-bold h4 mb-0"
+                to={`/Kanbas/Courses/${cid}/Editor`}
+                className="fw-bold h4 mb-0"
               >
                 {assignment.title}
               </Link>
@@ -71,3 +72,4 @@ export default function Assignments() {
     </div>
   );
 }
+export default Assignments;

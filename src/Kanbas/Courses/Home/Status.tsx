@@ -10,19 +10,19 @@ import { FaBell } from "react-icons/fa";
 
 export default function CourseStatus() {
   return (
-    <div id="wd-course-status" style={{ width: "300px" }}>
+    <div id="wd-course-status" style={{ width: "300px", marginLeft: "5px", marginRight: "5px" }}>
       <h2>Course Status</h2>
       <div className="d-flex">
-        <div className="w-50 pe-1">
+        <span className="w-50 pe-1">
           <button className="btn btn-lg btn-secondary w-100 text-nowrap ">
             <MdDoNotDisturbAlt className="me-2 fs-5" /> Unpublish{" "}
           </button>
-        </div>
-        <div className="w-50">
+        </span>
+        <span className="w-50">
           <button className="btn btn-lg btn-success w-100">
             <FaCheckCircle className="me-2 fs-5" /> Publish{" "}
           </button>
-        </div>
+        </span>
       </div>
       <br />
       <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">

@@ -31,7 +31,7 @@ export default function AssignmentControls() {
           Group
         </button>
 
-        <Link to="/Kanbas/Courses/Assignments/editor">
+        <Link to="/Kanbas/Courses/Assignments/Editor">
           <button id="wd-add-assignment-btn" className="btn btn-lg btn-danger">
             <FaPlus
               className="position-relative me-2"
