@@ -1,8 +1,10 @@
 import { FaPlus } from "react-icons/fa6";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function AssignmentControls() {
+  const { cid } = useParams();
+  
   return (
     <div
       id="wd-assignment-controls"
@@ -31,7 +33,7 @@ export default function AssignmentControls() {
           Group
         </button>
 
-        <Link to="/Kanbas/Courses/Assignments/Editor">
+        <Link to={`/Kanbas/Courses/${cid}/Editor`}>
           <button id="wd-add-assignment-btn" className="btn btn-lg btn-danger">
             <FaPlus
               className="position-relative me-2"
