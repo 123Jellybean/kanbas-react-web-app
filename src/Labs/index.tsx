@@ -9,8 +9,12 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "../App";
 import reportWebVitals from "../reportWebVitals";
+import store from "./store";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <App />
@@ -19,22 +23,22 @@ root.render(
 
 export default function Labs() {
   return (
-    <div>
-      <h1>Jenna Sigman</h1> <hr />
-      <br />
-      <h1>Labs</h1>
-      <br />
-      <TOC />
-      <br />
-      <Routes>
-        <Route path="/" element={<Navigate to="Lab1" />} />
-        <Route path="Lab1" element={<Lab1 />} />
-        <Route path="Lab2" element={<Lab2 />} />
-        <Route path="Lab3/*" element={<Lab3 />} />
-        <Route path="Lab4" element={<Lab4 />} />
-      </Routes>
-    </div>
+    <Provider store={store}>
+      <div className="container-fluid">
+        <h1>Jenna Sigman</h1> <hr />
+        <br />
+        <h1>Labs</h1>
+        <br />
+        <TOC />
+        <br />
+        <Routes>
+          <Route path="/" element={<Navigate to="Lab1" />} />
+          <Route path="Lab1" element={<Lab1 />} />
+          <Route path="Lab2" element={<Lab2 />} />
+          <Route path="Lab3/*" element={<Lab3 />} />
+          <Route path="Lab4" element={<Lab4 />} />
+        </Routes>
+      </div>
+    </Provider>
   );
-
-  
 }
