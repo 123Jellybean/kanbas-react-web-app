@@ -1,6 +1,5 @@
 import { BsGripVertical } from "react-icons/bs";
 import { MdArrowDropDown } from "react-icons/md";
-import LessonControlButtons from "../Modules/LessonControlButtons";
 import AssignmentControls from "./AssignmentControls";
 import { FaPlus } from "react-icons/fa";
 import { IoEllipsisVertical } from "react-icons/io5";
@@ -8,6 +7,7 @@ import { PiNotebook } from "react-icons/pi";
 import { useLocation, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import * as db from "../../Database";
+import ModuleControlButtons from "../Modules/ModuleControlButtons";
 
 function Assignments() {
   const { cid } = useParams();
@@ -63,9 +63,12 @@ function Assignments() {
             </div>
 
             {/* Control buttons */}
-            <div className="ms-auto">
-              <LessonControlButtons />
-            </div>
+            {/* <div className="ms-auto">
+              <ModuleControlButtons
+                moduleId={module._id}
+                deleteModule={deleteModule}
+              />
+            </div> */}
           </li>
         ))}
       </ul>
