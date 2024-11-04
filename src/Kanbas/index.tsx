@@ -9,9 +9,9 @@ import * as db from "./Database";
 import { useState } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
+import ProtectedRoute from "./Account/ProtectedRoute";
 
 export default function Kanbas() {
-   
   const [courses, setCourses] = useState<any[]>(db.courses);
   const [course, setCourse] = useState<any>({
     _id: "0",
@@ -31,10 +31,6 @@ export default function Kanbas() {
 
   const deleteCourse = (courseId: string) => {
     setCourses(courses.filter((c) => c._id !== courseId));
-  };
-
-  const editCourse = (selectedCourse: any) => {
-    setCourse(selectedCourse);
   };
 
   const resetCourseForm = () => {
@@ -63,28 +59,41 @@ export default function Kanbas() {
 
   return (
     <Provider store={store}>
-    <div id="wd-kanbas">
-      <KanbasNavigation />
-      <div className="wd-main-content-offset p-3">
-        <Routes>
-          <Route path="/" element={<Navigate to="Account" />} />
-          <Route path="/Account/*" element={<Account />} />
-          <Route path="/Dashboard" element={
-            <Dashboard               
-              courses={courses}
-              course={course}
-              setCourse={setCourse}
-              addNewCourse={addNewCourse}
-              deleteCourse={deleteCourse}
-              updateCourse={updateCourse}
-              editCourse={editCourse}/>
-            } />
-          <Route path="/Courses/:cid/*" element={<Courses courses={courses} />} />
-          <Route path="/Calendar*" element={<h2>Calendar </h2>} />
-          <Route path="/Inbox*" element={<h2>Inbox</h2>} />
-        </Routes>
+      <div id="wd-kanbas">
+        <KanbasNavigation />
+        <div className="wd-main-content-offset p-3">
+          <Routes>
+            <Route path="/" element={<Navigate to="Account" />} />
+            <Route path="/Account/*" element={<Account />} />
+            <Route
+              path="/Dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard
+                    courses={courses}
+                    course={course}
+                    setCourse={setCourse}
+                    addNewCourse={addNewCourse}
+                    deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}
+                    
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/Courses/:cid/*"
+              element={
+                <ProtectedRoute>
+                  <Courses courses={courses} />{" "}
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/Calendar*" element={<h2>Calendar </h2>} />
+            <Route path="/Inbox*" element={<h2>Inbox</h2>} />
+          </Routes>
+        </div>
       </div>
-    </div>
     </Provider>
   );
 }

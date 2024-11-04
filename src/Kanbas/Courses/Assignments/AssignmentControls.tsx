@@ -1,48 +1,14 @@
-import { FaPlus } from "react-icons/fa6";
-import { CiSearch } from "react-icons/ci";
-import { Link, useParams } from "react-router-dom";
+import { IoEllipsisVertical } from "react-icons/io5";
+import { BsPlus } from "react-icons/bs"; // Import BsPlus icon
 
-export default function AssignmentControls() {
-  const { cid } = useParams();
-  
+export default function AssignmentsControls() {
   return (
-    <div
-      id="wd-assignment-controls"
-      className="d-flex justify-content-between align-items-right"
-    >
-      <div className="input-group" style={{ width: "400px" }}>
-        <span className="input-group-text">
-          <CiSearch />
-        </span>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="form-control"
-        />
-      </div>
-
-      <div>
-        <button
-          id="wd-group-assignment-btn"
-          className="btn btn-lg btn-secondary me-2"
-        >
-          <FaPlus
-            className="position-relative me-2"
-            style={{ bottom: "1px" }}
-          />
-          Group
-        </button>
-
-        <Link to={`/Kanbas/Courses/${cid}/Editor`}>
-          <button id="wd-add-assignment-btn" className="btn btn-lg btn-danger">
-            <FaPlus
-              className="position-relative me-2"
-              style={{ bottom: "1px" }}
-            />
-            Assignment
-          </button>
-        </Link>
-      </div>
+    <div className="float-end">
+      <span className="badge rounded-pill bg-transparent border custom-badge text-dark px-3 me-2">
+        40% of Total
+      </span>
+      <BsPlus className="fs-2 me-2" /> {/* BsPlus icon */}
+      <IoEllipsisVertical className="fs-4" />
     </div>
   );
 }

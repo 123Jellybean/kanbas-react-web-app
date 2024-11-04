@@ -77,3 +77,27 @@ select {
   transform: translateY(-50%);
   pointer-events: none; /* Ensures the arrow isn't clickable */
 }
+
+
+.custom-badge {
+  border-color: #000 !important; 
+  color: #000; 
+}
+
+.dropdown-triangle {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid black; /* Creates a right-facing arrow */
+  transition: transform 0.3s ease; 
+}
+
+.triangle-down {
+  transform: rotate(90deg); /* Rotates the triangle down */
+}
+
+.triangle-right {
+  transform: rotate(0deg); 
+}

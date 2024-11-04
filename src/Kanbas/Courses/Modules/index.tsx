@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import { useParams } from "react-router";
-import * as db from "../../Database";
 import { addModule, editModule, updateModule, deleteModule } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -12,30 +11,7 @@ export default function Modules() {
   const [moduleName, setModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
-
-  // const [modules, setModules] = useState<any[]>(db.modules);
-  // const addModule = () => {
-  //   setModules([
-  //     ...modules,
-  //     {
-  //       _id: new Date().getTime().toString(),
-  //       name: moduleName,
-  //       course: cid,
-  //       lessons: [],
-  //     },
-  //   ]);
-  //   setModuleName("");
-  // };
-  // const deleteModule = (moduleId: string) => {
-  //   setModules(modules.filter((m) => m._id !== moduleId));
-  // };
-  // const editModule = (moduleId: string) => {
-  //   setModules(modules.map((m) => (m._id === moduleId ? { ...m, editing: true } : m)));
-  // };
-  // const updateModule = (module: any) => {
-  //   setModules(modules.map((m) => (m._id === module._id ? module : m)));
-  // };
-
+  
   return (
     <div>
       <div>
