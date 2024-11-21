@@ -37,3 +37,10 @@ export const createAssignmentForCourse = async (courseId: string, assignment: an
   const response = await axios.post(`${COURSES_API}/${courseId}/assignments`, assignment);
   return response.data;
 };
+export function deleteAssignment(assignmentId: string) {
+  throw new Error("Function not implemented.");
+}
+export const updateAssignment = async (course: any) => {
+  const { data } = await axios.put(`${COURSES_API}/${course._id}`, course);
+  return data;
+};
