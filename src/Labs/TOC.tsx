@@ -54,6 +54,26 @@ export default function TOC() {
           My GitHub
         </a>
       </li>
+      <li className="nav-item">
+        <a
+          id="wd-k"
+          href="https://github.com/123Jellybean/kanbas-node-server-app"
+          className="nav-link"
+        >
+          Kanbas Server Repo
+        </a>
+      </li>
+      <li className="nav-item">
+        <a
+          id="wd-k"
+          href="https://kanbas-node-server-app-jmje.onrender.com"
+          className="nav-link"
+        >
+          Render Server
+        </a>
+      </li>
+
+      
     </ul>
   );
 }
