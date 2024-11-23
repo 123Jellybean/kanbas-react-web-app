@@ -96,10 +96,6 @@ export default function Assignments() {
                     </div>
                     {currentUser.role === "FACULTY" && (
                       <div className="ms-auto">
-                        <FaTrash
-                          className="text-danger me-2 mb-1"
-                          onClick={() => handleDeleteClick(assignment._id)}
-                        />
                         <ModuleControlButtons moduleId={""} deleteModule={function (moduleId: string): void {
                           throw new Error("Function not implemented.");
                         } } editModule={function (moduleId: string): void {

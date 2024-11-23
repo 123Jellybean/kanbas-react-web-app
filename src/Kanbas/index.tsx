@@ -3,7 +3,6 @@ import Account from "./Account";
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
 import Courses from "./Courses";
-import "./styles.css";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./Account/ProtectedRoute";
@@ -16,8 +15,12 @@ export default function Kanbas() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const [course, setCourse] = useState<any>({
-    _id: "1234", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
+    _id: "1234",
+    name: "New Course",
+    number: "New Number",
+    startDate: "2023-09-10",
+    endDate: "2023-12-15",
+    description: "New Description",
   });
 
   const fetchCourses = async () => {
@@ -50,28 +53,46 @@ export default function Kanbas() {
   };
 
   return (
-      <Session>
-        <div id="wd-kanbas">
+    <Session>
+      <div id="wd-kanbas" className="d-flex">
+        {/* Navigation Bar */}
+        <div style={{ width: "120px" }}>
           <KanbasNavigation />
-          <div className="wd-main-content-offset p-3">
-            <Routes>
-              <Route path="/" element={<Navigate to="Dashboard" />} />
-              <Route path="/Account/*" element={<Account />} />
-              <Route path="/Dashboard" element={<ProtectedRoute>
-                <Dashboard
-                  course={course}
-                  courses={courses}
-                  setCourse={setCourse}
-                  addNewCourse={addNewCourse}
-                  deleteCourse={deleteCourse}
-                  updateCourse={updateCourse} />
-              </ProtectedRoute>} />
-              <Route path="/Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses} /> </ProtectedRoute>} />
-              <Route path="/Calendar" element={<h1>Calendar</h1>} />
-              <Route path="/Inbox" element={<h1>Inbox</h1>} />
-            </Routes>
-          </div>
         </div>
-      </Session>
+
+        {/* Main Content */}
+        <div id="wd-main-content" className="flex-grow-1 p-3">
+          <Routes>
+            <Route path="/" element={<Navigate to="Dashboard" />} />
+            <Route path="/Account/*" element={<Account />} />
+            <Route
+              path="/Dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard
+                    course={course}
+                    courses={courses}
+                    setCourse={setCourse}
+                    addNewCourse={addNewCourse}
+                    deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/Courses/:cid/*"
+              element={
+                <ProtectedRoute>
+                  <Courses courses={courses} />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/Calendar" element={<h1>Calendar</h1>} />
+            <Route path="/Inbox" element={<h1>Inbox</h1>} />
+          </Routes>
+        </div>
+      </div>
+    </Session>
   );
 }

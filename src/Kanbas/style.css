@@ -26,10 +26,6 @@ body * {
   --bs-btn-hover-color: #fff !important;
 }
 
-.bg-secondary {
-  --bs-secondary-rgb: 199, 205, 209;
-}
-
 .list-group-item {
   --bs-list-group-border-color: gray;
 }
@@ -40,17 +36,6 @@ body * {
 
 .wd-lesson {
   border-left: 3px solid green !important;
-}
-
-.custom-active {
-  color: black;
-  font-weight: bold;
-  border-left: 3px solid black !important;
-}
-
-.custom-inactive {
-  color: red;
-  font-weight: normal;
 }
 
 .select-wrapper {
@@ -70,34 +55,10 @@ select {
 .select-wrapper::after {
   content: '▼'; /* You can replace this with an icon or image */
   font-size: 12px;
-  color: #333;
+  color: #c7cdd1;
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none; /* Ensures the arrow isn't clickable */
-}
-
-
-.custom-badge {
-  border-color: #000 !important; 
-  color: #000; 
-}
-
-.dropdown-triangle {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid black; /* Creates a right-facing arrow */
-  transition: transform 0.3s ease; 
-}
-
-.triangle-down {
-  transform: rotate(90deg); /* Rotates the triangle down */
-}
-
-.triangle-right {
-  transform: rotate(0deg); 
 }

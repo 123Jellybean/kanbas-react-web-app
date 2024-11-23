@@ -13,7 +13,7 @@ export default function CoursesNavigation() {
     "People",
   ];
   return (
-    <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
+    <div id="wd-courses-navigation" className="list-group fs-5">
       {links.map((link) => (
         <Link
           key={link}
@@ -21,8 +21,8 @@ export default function CoursesNavigation() {
           className={`list-group-item border border-0
                     ${
                       pathname.includes(link)
-                        ? "active text-black"
-                        : "text-danger"
+                        ? "active border-start border-3 border-dark bg-transparent text-dark rounded-0"
+                        : "inactive text-danger"
                     }`}
         >
           {link}
