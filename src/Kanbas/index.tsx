@@ -9,6 +9,7 @@ import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
 import * as userClient from "./Account/client";
 import * as client from "./Courses/client";
+import * as courseClient from "./Courses/client";
 
 export default function Kanbas() {
   const [courses, setCourses] = useState<any[]>([]);
@@ -24,26 +25,26 @@ export default function Kanbas() {
   });
 
   const fetchCourses = async () => {
-    let courses = [];
     try {
-      courses = await userClient.findMyCourses();
+      const courses = await courseClient.fetchAllCourses();
+      setCourses(courses);
     } catch (error) {
       console.error(error);
     }
-    setCourses(courses);
-  };
+  }; 
 
   useEffect(() => {
     fetchCourses();
   }, [currentUser]);
 
   const addNewCourse = async () => {
-    const newCourse = await userClient.createCourse(course);
+    // const newCourse = await userClient.createCourse(course);
+    const newCourse = await courseClient.createCourse(course);
     setCourses([...courses, newCourse]);
   };
 
   const deleteCourse = async (courseId: string) => {
-    const status = await client.deleteCourse(courseId);
+    const status = await courseClient.deleteCourse(courseId);
     setCourses(courses.filter((course) => course._id !== courseId));
   };
 

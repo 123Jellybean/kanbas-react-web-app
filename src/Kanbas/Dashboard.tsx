@@ -26,10 +26,10 @@ export default function Dashboard({
   const navigate = useNavigate();
 
   const isFaculty = currentUser?.role === "FACULTY";
-  
-    console.log("Current User:", currentUser);
-    console.log("Enrollments:", enrollments);
-    console.log("Courses:", courses);
+
+  console.log("Current User:", currentUser);
+  console.log("Enrollments:", enrollments);
+  console.log("Courses:", courses);
 
   const enrolledCourses = courses.filter((course) =>
     enrollments.some(
@@ -38,9 +38,12 @@ export default function Dashboard({
     )
   );
 
-  const displayedCourses = isFaculty ? courses : (viewAllCourses ? courses : enrolledCourses);
+  const displayedCourses = isFaculty
+    ? courses
+    : viewAllCourses
+    ? courses
+    : enrolledCourses;
 
-    
   const handleEnrollToggle = (courseId: string, enrolled: string) => {
     if (enrolled) {
       dispatch(unenroll({ user: currentUser._id, course: courseId }));
