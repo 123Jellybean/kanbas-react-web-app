@@ -39,6 +39,8 @@ export default function Dashboard({
       </h1>{" "}
       <hr />
       <br />
+      
+       {/* This is the new course form */}
       {currentUser.role == "FACULTY" && (
         <div>
           <input
@@ -76,6 +78,8 @@ export default function Dashboard({
           <hr />
         </div>
       )}
+
+      {/* This is the actual courses appearing on the dashboard */}
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>{" "}
       <hr />
       <div id="wd-dashboard-courses" className="row">
