@@ -12,44 +12,11 @@ import * as client from "./Courses/client";
 import * as courseClient from "./Courses/client";
 
 export default function Kanbas() {
-  const [courses, setCourses] = useState<any[]>([]);
   const { currentUser } = useSelector((state: any) => state.accountReducer);
 
-  const [course, setCourse] = useState<any>({
-    _id: "1234",
-    name: "New Course",
-    number: "New Number",
-    startDate: "2023-09-10",
-    endDate: "2023-12-15",
-    description: "New Description",
-  });
+  const [courses, setCourses] = useState<any[]>([]);
 
   const [enrolling, setEnrolling] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (enrolling) {
-      fetchCourses();
-    } else {
-      findCoursesForUser();
-    }
-  }, [currentUser, enrolling]);
-
-  const addNewCourse = async () => {
-    // const newCourse = await userClient.createCourse(course);
-    const newCourse = await courseClient.createCourse(course);
-    setCourses([...courses, newCourse]);
-  };
-
-  const deleteCourse = async (courseId: string) => {
-    const status = await courseClient.deleteCourse(courseId);
-    setCourses(courses.filter((course) => course._id !== courseId));
-  };
-
-  const updateCourse = async () => {
-    await client.updateCourse(course);
-    setCourses(courses.map((c) => (c._id === course._id ? course : c)));
-  };
-
   const findCoursesForUser = async () => {
     try {
       const courses = await userClient.findCoursesForUser(currentUser._id);
@@ -76,6 +43,7 @@ export default function Kanbas() {
     );
   };
 
+
   const fetchCourses = async () => {
     try {
       const allCourses = await courseClient.fetchAllCourses();
@@ -93,6 +61,43 @@ export default function Kanbas() {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  useEffect(() => {
+    if (enrolling) {
+      fetchCourses();
+    } else {
+      findCoursesForUser();
+    }
+
+  }, [currentUser, enrolling]);
+
+  const [course, setCourse] = useState<any>({
+    _id: "0", name: "New Course", number: "New Number",
+    startDate: "2023-09-10", endDate: "2023-12-15",
+    image: "/images/cybertruck.jpg", description: "New Description"
+  });
+  const addNewCourse = async () => {
+    //const newCourse = await userClient.createCourse(course);
+    const newCourse = await courseClient.createCourse(course);
+    setCourses([...courses, newCourse]);
+  };
+  const deleteCourse = async (courseId: string) => {
+    const status = await courseClient.deleteCourse(courseId);
+    setCourses(courses.filter((course) => course._id !== courseId));
+  };
+
+  const updateCourse = async () => {
+    await courseClient.updateCourse(course);
+    setCourses(
+      courses.map((c) => {
+        if (c._id === course._id) {
+          return course;
+        } else {
+          return c;
+        }
+      })
+    );
   };
 
   return (
