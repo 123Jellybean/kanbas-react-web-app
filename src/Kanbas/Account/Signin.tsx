@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
+import * as db from "../Database";
 import * as client from "./client";
 
 export default function Signin() {
@@ -17,7 +18,7 @@ export default function Signin() {
 
   return (
     <div id="wd-signin-screen">
-      <h1>Sign in</h1>
+      <h3>Sign in</h3>
       <input
         defaultValue={credentials.username}
         onChange={(e) =>
@@ -37,6 +38,7 @@ export default function Signin() {
         type="password"
         className="form-control mb-2"
       />
+
       <button
         onClick={signin}
         id="wd-signin-btn"
@@ -46,7 +48,7 @@ export default function Signin() {
         Sign in{" "}
       </button>
 
-      <Link id="wd-signup-link" to="/Kanbas/Account/Signup">
+      <Link id="wd-signup-link" className="mt-2" to="/Kanbas/Account/Signup">
         Sign up
       </Link>
     </div>

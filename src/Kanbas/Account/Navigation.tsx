@@ -6,7 +6,7 @@ export default function AccountNavigation() {
   const active = (path: string) => (pathname.includes(path) ? "active" : "");
   const { pathname } = useLocation();
   return (
-    <div id="wd-account-navigation" className="list-group">
+    <div id="wd-account-navigation" className="list-group pe-2">
       {links.map((link) => (
         <Link
           key={link}
