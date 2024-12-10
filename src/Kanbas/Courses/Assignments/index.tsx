@@ -9,8 +9,8 @@ import { useParams } from "react-router-dom";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { BsGripVertical } from "react-icons/bs";
 import BSGripVertical from "../Modules/BsGripVertical";
-import AssignmentHeaderButtons from "./AssignmentHeadControlButtons";
-import AssignmentsControl from "./AssignmentsControls";
+import AssignmentHeaderButtons from "./AssignmentHeaderButtons";
+import AssignmentsControl from "./AssignmentsControl";
 import * as coursesClient from "../client";
 import * as assignmentsClient from "./client";
 
@@ -19,9 +19,7 @@ export default function Assignments() {
   const { cid } = useParams();
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const [selectedAssignmentId, setSelectedAssignmentId] = useState<
-    string | null
-  >(null);
+  const [selectedAssignmentId, setSelectedAssignmentId] = useState<string | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const handleDeleteClick = (assignmentId: string) => {
@@ -30,9 +28,7 @@ export default function Assignments() {
   };
 
   const fetchAssignments = async () => {
-    const assignments = await coursesClient.findAssignmentsForCourse(
-      cid as string
-    );
+    const assignments = await coursesClient.findAssignmentsForCourse(cid as string);
     dispatch(setAssignments(assignments));
   };
   useEffect(() => {
@@ -52,11 +48,7 @@ export default function Assignments() {
         <div className="col-auto">
           <div className="d-flex align-items-center">
             <IoIosSearch className="me-2" />
-            <input
-              id="wd-search-assignment"
-              className="form-control"
-              placeholder="Search for Assignment"
-            />
+            <input id="wd-search-assignment" className="form-control" placeholder="Search for Assignment" />
           </div>
         </div>
         {currentUser.role === "FACULTY" && <AssignmentsControl />}
@@ -69,58 +61,48 @@ export default function Assignments() {
             {currentUser.role === "FACULTY" && <AssignmentHeaderButtons />}
           </div>
           <ul className="wd-lessons list-group rounded-0">
-            {assignments.map((assignment: any) => {
-              const dueDate = new Date(assignment.dueDate);
-              const availableDate = new Date(assignment.availableFrom);
-              const formattedAvailableFromDate = availableDate.toLocaleString(
-                "en-US",
-                {
+            {assignments
+              .map((assignment: any) => {
+                const dueDate = new Date(assignment.dueDate);
+                const availableDate = new Date(assignment.availableFrom);
+                const formattedAvailableFromDate = availableDate.toLocaleString("en-US", {
                   month: "long",
                   day: "numeric",
                   hour: "numeric",
                   minute: "numeric",
                   hour12: true,
-                }
-              );
-              const formattedDueDate = dueDate.toLocaleString("en-US", {
-                month: "long",
-                day: "numeric",
-                hour: "numeric",
-                minute: "numeric",
-                hour12: true,
-              });
-              return (
-                <li
-                  key={assignment._id}
-                  className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center"
-                >
-                  {currentUser.role === "FACULTY" && <BsGripVertical />}
-                  <VscNotebook color="green" className="me-3" />
-                  <div className="me-5">
-                    <a
-                      className="wd-assignment-link text-dark text-decoration-none"
-                      href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
-                    >
-                      {assignment.title}
-                    </a>
-                    <div className="text-muted small">
-                      <strong>Not available until</strong>{" "}
-                      {formattedAvailableFromDate} | <strong> Due</strong>{" "}
-                      {formattedDueDate} | {assignment.points} pts
+                });
+                const formattedDueDate = dueDate.toLocaleString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true,
+                });
+                return (
+                  <li key={assignment._id} className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center">
+                    {currentUser.role === "FACULTY" && <BsGripVertical />}
+                    <VscNotebook color="green" className="me-3" />
+                    <div className="me-5">
+                      <a className="wd-assignment-link text-dark text-decoration-none" href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
+                        {assignment.title}
+                      </a>
+                      <div className="text-muted small">
+                        <strong>Not available until</strong> {formattedAvailableFromDate} | <strong> Due</strong> {formattedDueDate} | {assignment.points} pts
+                      </div>
                     </div>
-                  </div>
-                  {currentUser.role === "FACULTY" && (
-                    <div className="ms-auto">
-                      <FaTrash
-                        className="text-danger me-2 mb-1"
-                        onClick={() => handleDeleteClick(assignment._id)}
-                      />
-                      <LessonControlButtons />
-                    </div>
-                  )}
-                </li>
-              );
-            })}
+                    {currentUser.role === "FACULTY" && (
+                      <div className="ms-auto">
+                        <FaTrash
+                          className="text-danger me-2 mb-1"
+                          onClick={() => handleDeleteClick(assignment._id)}
+                        />
+                        <LessonControlButtons />
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
           </ul>
         </li>
       </ul>
