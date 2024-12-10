@@ -14,6 +14,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import * as coursesClient from "../client";
 import * as modulesClient from "./client";
+import ModuleEditor from "./ModuleEditor";
 
 export default function Modules() {
   const { cid } = useParams();
@@ -53,7 +54,14 @@ export default function Modules() {
             setModuleName={setModuleName}
             addModule={createModuleForCourse}
           />
+          
         )}
+        <ModuleEditor
+          dialogTitle="Edit Module"
+          moduleName={moduleName}
+          setModuleName={setModuleName}
+          addModule={createModuleForCourse}
+        />
         <br />
         {modules.map((module: any) => (
           <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">

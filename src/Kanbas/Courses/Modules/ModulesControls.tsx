@@ -21,18 +21,11 @@ export default function ModulesControls({
         className="btn btn-lg btn-danger me-1 float-end"
         data-bs-toggle="modal"
         data-bs-target="#wd-add-module-dialog"
+        onClick={addModule}
       >
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Module
       </button>
-      
-      <Link
-        to={`/Kanbas/Courses/Modules/ModulesEditor`}
-        id="wd-modules-editor-link"
-        className="btn btn-lg btn-primary me-1 float-end"
-      >
-        Modules Editor
-      </Link>
 
       <div className="dropdown d-inline me-1 float-end">
         <button

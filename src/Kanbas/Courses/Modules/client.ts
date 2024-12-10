@@ -13,3 +13,5 @@ export const updateModule = async (module: any) => {
   const { data } = await axiosWithCredentials.put(`${MODULES_API}/${module._id}`, module);
   return data;
 };
+
+
