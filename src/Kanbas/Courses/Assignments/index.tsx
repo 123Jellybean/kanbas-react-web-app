@@ -8,8 +8,9 @@ import DeleteDialog from "./DeleteDialog";
 import { useParams } from "react-router-dom";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { BsGripVertical } from "react-icons/bs";
-import AssignmentHeaderButtons from "./AssignmentHeaderButtons";
-import AssignmentsControl from "./AssignmentControls";
+import BSGripVertical from "../Modules/BsGripVertical";
+import AssignmentHeaderButtons from "./AssignmentHeadControlButtons";
+import AssignmentsControl from "./AssignmentsControls";
 import * as coursesClient from "../client";
 import * as assignmentsClient from "./client";
 
@@ -63,7 +64,7 @@ export default function Assignments() {
       <ul id="wd-assignments" className="list-group rounded-0">
         <li className="wd-assignment-group list-group-item p-0 mb-5 fs-5 border-gray">
           <div className="wd-title p-3 ps-2 bg-secondary align-items-center">
-            {currentUser.role === "FACULTY" && <BsGripVertical />}
+            {currentUser.role === "FACULTY" && <BSGripVertical />}
             ASSIGNMENTS
             {currentUser.role === "FACULTY" && <AssignmentHeaderButtons />}
           </div>

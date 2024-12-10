@@ -3,13 +3,15 @@ import Account from "./Account";
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
 import Courses from "./Courses";
+import "./styles.css";
+//import * as db from "./Database";
+import * as client from "./Courses/client";
+import * as userClient from "./Account/client";
+import * as courseClient from "./Courses/client";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import ProtectedRoute from "./Account/ProtectedRoute";
 import Session from "./Account/Session";
-import * as userClient from "./Account/client";
-import * as client from "./Courses/client";
-import * as courseClient from "./Courses/client";
+import { useSelector } from "react-redux";
 
 export default function Kanbas() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -19,9 +21,7 @@ export default function Kanbas() {
   const [enrolling, setEnrolling] = useState<boolean>(false);
   const findCoursesForUser = async () => {
     try {
-      console.log("currentUser._id", currentUser._id);
       const courses = await userClient.findCoursesForUser(currentUser._id);
-      console.log("courses", courses);
       setCourses(courses);
     } catch (error) {
       console.error(error);
@@ -101,49 +101,36 @@ export default function Kanbas() {
       })
     );
   };
-
   return (
     <Session>
-      <div id="wd-kanbas" className="d-flex">
-        {/* Navigation Bar */}
-        <div style={{ width: "120px" }}>
-          <KanbasNavigation />
-        </div>
+      <div id="wd-kanbas">
 
-        {/* Main Content */}
-        <div id="wd-main-content" className="flex-grow-1 p-3">
+        <KanbasNavigation />
+        <div className="wd-main-content-offset p-3">
           <Routes>
-            <Route path="/" element={<Navigate to="Dashboard" />} />
+            <Route path="/" element={<Navigate to="Account" />} />
             <Route path="/Account/*" element={<Account />} />
-            <Route
-              path="/Dashboard"
-              element={
-                <ProtectedRoute>
-                  <Dashboard
-                    course={course}
-                    courses={courses}
-                    setCourse={setCourse}
-                    addNewCourse={addNewCourse}
-                    deleteCourse={deleteCourse}
-                    updateCourse={updateCourse}
-                    enrolling={enrolling}
-                    setEnrolling={setEnrolling}
-                    updateEnrollment={updateEnrollment}
-                  />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/Courses/:cid/*"
-              element={
-                <ProtectedRoute>
-                  <Courses courses={courses} />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/Dashboard" element={<ProtectedRoute>
+
+              <Dashboard
+                courses={courses}
+                course={course}
+                setCourse={setCourse}
+                addNewCourse={addNewCourse}
+                deleteCourse={deleteCourse}
+                updateCourse={updateCourse}
+                enrolling={enrolling}
+                setEnrolling={setEnrolling}
+                updateEnrollment={updateEnrollment}
+              /></ProtectedRoute>
+            } />
+
+            <Route path="/Courses/:cid/*" element={<ProtectedRoute>
+              <Courses courses={courses} /></ProtectedRoute>} />
             <Route path="/Calendar" element={<h1>Calendar</h1>} />
             <Route path="/Inbox" element={<h1>Inbox</h1>} />
           </Routes>
+
         </div>
       </div>
     </Session>
